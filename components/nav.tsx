@@ -3,11 +3,7 @@
 import { useState, useEffect } from "react";
 import { motion } from "motion/react";
 import Image from "next/image";
-import {
-  Sheet,
-  SheetContent,
-  SheetTrigger,
-} from "@/components/ui/sheet";
+import { Drawer } from "vaul";
 import { CommandTrigger } from "@/components/command-menu";
 import { RetroThemeToggle } from "@/components/ui/retro-theme-toggle";
 import { cn } from "@/lib/utils";
@@ -48,7 +44,7 @@ export function Nav() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, ease }}
           className={cn(
-            "flex items-center gap-1 rounded-full px-2 py-1.5 transition-all duration-400",
+            "flex items-center gap-1 rounded-full px-2 py-1.5 transition-[background-color,border-color,box-shadow,backdrop-filter] duration-[400ms]",
             scrolled
               ? "bg-white/90 dark:bg-zinc-900/90 backdrop-blur-xl border border-black/10 dark:border-white/10 shadow-[0_4px_24px_rgba(0,0,0,0.08)]"
               : "bg-white/70 dark:bg-zinc-900/60 backdrop-blur-md border border-black/8 dark:border-white/8"
@@ -71,7 +67,7 @@ export function Nav() {
               <a
                 key={link.label}
                 href={link.href}
-                className="px-3 py-1.5 text-sm text-muted-foreground hover:text-foreground rounded-full hover:bg-black/5 transition-all duration-200"
+                className="px-3 py-1.5 text-sm text-muted-foreground hover:text-foreground active:scale-[0.95] rounded-full hover:bg-black/5 transition-[color,background-color,transform] duration-200"
               >
                 {link.label}
               </a>
@@ -83,41 +79,40 @@ export function Nav() {
             <RetroThemeToggle />
           </div>
 
-          {/* Mobile: shadcn Sheet */}
-          <Sheet open={sheetOpen} onOpenChange={(open: boolean) => setSheetOpen(open)}>
-            <SheetTrigger className="md:hidden flex items-center justify-center w-8 h-8 rounded-full hover:bg-black/6 transition-colors text-foreground ml-1">
+          {/* Mobile: Vaul bottom drawer */}
+          <Drawer.Root open={sheetOpen} onOpenChange={setSheetOpen}>
+            <Drawer.Trigger className="md:hidden flex items-center justify-center w-8 h-8 rounded-full hover:bg-black/6 transition-colors text-foreground ml-1">
               <List weight="bold" size={16} />
-            </SheetTrigger>
-
-            <SheetContent
-              side="right"
-              className="w-full sm:max-w-full flex flex-col justify-center items-center gap-5 bg-white dark:bg-zinc-900 border-0"
-            >
-              <Image src="/logo.png" alt="Mad House" width={72} height={72} className="mb-2 drop-shadow-md" />
-
-              {links.map((link) => (
-                <a
-                  key={link.label}
-                  href={link.href}
-                  onClick={() => setSheetOpen(false)}
-                  className="text-3xl font-black tracking-tight text-foreground hover:text-primary transition-colors"
-                >
-                  {link.label}
-                </a>
-              ))}
-
-              <button
-                onClick={() => { setSheetOpen(false); toggle(); }}
-                className="mt-2 text-sm text-muted-foreground hover:text-foreground transition-colors"
-              >
-                Search ⌘K
-              </button>
-
-              <div className="mt-2">
-                <RetroThemeToggle />
-              </div>
-            </SheetContent>
-          </Sheet>
+            </Drawer.Trigger>
+            <Drawer.Portal>
+              <Drawer.Overlay className="fixed inset-0 bg-black/40 z-40" />
+              <Drawer.Content className="fixed bottom-0 left-0 right-0 z-50 flex flex-col rounded-t-2xl bg-white dark:bg-zinc-900 outline-none">
+                <Drawer.Handle className="mx-auto mt-3 mb-1 h-1.5 w-12 rounded-full bg-black/10 dark:bg-white/10" />
+                <div className="flex flex-col items-center gap-5 px-6 pt-4 pb-12">
+                  <Image src="/logo.png" alt="Mad House" width={56} height={56} className="mb-1 drop-shadow-md" />
+                  {links.map((link) => (
+                    <a
+                      key={link.label}
+                      href={link.href}
+                      onClick={() => setSheetOpen(false)}
+                      className="text-3xl font-black tracking-tight text-foreground active:scale-[0.97] transition-[color,transform] duration-150"
+                    >
+                      {link.label}
+                    </a>
+                  ))}
+                  <button
+                    onClick={() => { setSheetOpen(false); toggle(); }}
+                    className="mt-2 text-sm text-muted-foreground active:scale-[0.97] transition-[color,transform] duration-150"
+                  >
+                    Search ⌘K
+                  </button>
+                  <div className="mt-2">
+                    <RetroThemeToggle />
+                  </div>
+                </div>
+              </Drawer.Content>
+            </Drawer.Portal>
+          </Drawer.Root>
         </motion.nav>
       </header>
     </>
