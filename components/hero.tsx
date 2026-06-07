@@ -62,7 +62,7 @@ export function Hero() {
                 <TooltipTrigger>
                   <a
                     href="#ideas"
-                    className="inline-flex items-center rounded-full h-12 px-7 font-medium text-sm text-foreground hover:text-primary active:scale-[0.97] border border-black/10 hover:border-primary/30 transition-[color,border-color,transform] duration-200"
+                    className="inline-flex items-center rounded-full h-12 px-7 font-medium text-sm text-foreground hover:text-primary active:scale-[0.97] border border-foreground/10 hover:border-primary/30 transition-[color,border-color,transform] duration-200"
                     tabIndex={-1}
                   >
                     Browse ideas

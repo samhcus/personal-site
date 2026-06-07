@@ -74,10 +74,10 @@ export function RevenueStreams() {
               viewport={{ once: true, amount: 0.2 }}
               transition={{ duration: 0.5, delay: i * 0.07, ease }}
             >
-              <Card className="rounded-2xl border-border hover:ring-black/12 transition-all duration-300 gap-0 py-0">
+              <Card className="rounded-2xl border-border hover:ring-foreground/[0.12] transition-all duration-300 gap-0 py-0">
                 <CardHeader className="p-7 pb-4">
                   <div className="flex items-start justify-between mb-3">
-                    <div className="w-9 h-9 rounded-lg flex items-center justify-center bg-black/5 text-muted-foreground">
+                    <div className="w-9 h-9 rounded-lg flex items-center justify-center bg-foreground/[0.05] text-muted-foreground">
                       <s.icon weight="duotone" size={18} />
                     </div>
                     <Badge variant="outline" className={s.badgeClass}>

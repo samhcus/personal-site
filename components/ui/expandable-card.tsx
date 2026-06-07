@@ -49,7 +49,7 @@ export function ExpandableCardGrid({ cards }: { cards: ExpandableCardItem[] }) {
             <motion.div
               layoutId={`card-${active.title}-${id}`}
               ref={ref}
-              className="w-full max-w-[500px] h-full md:h-fit md:max-h-[90%] flex flex-col bg-white rounded-3xl overflow-hidden border border-black/8 shadow-[0_32px_80px_rgba(0,0,0,0.15)]"
+              className="w-full max-w-[500px] h-full md:h-fit md:max-h-[90%] flex flex-col bg-card rounded-3xl overflow-hidden border border-border shadow-[0_32px_80px_rgba(0,0,0,0.15)]"
             >
               <div className="relative bg-card">
                 <motion.button
@@ -57,7 +57,7 @@ export function ExpandableCardGrid({ cards }: { cards: ExpandableCardItem[] }) {
                   animate={{ opacity: 1 }}
                   exit={{ opacity: 0 }}
                   onClick={() => setActive(null)}
-                  className="absolute top-3 right-3 z-10 flex items-center justify-center w-8 h-8 rounded-full bg-white/90 backdrop-blur-sm border border-black/8 hover:bg-white transition-colors"
+                  className="absolute top-3 right-3 z-10 flex items-center justify-center w-8 h-8 rounded-full bg-card/90 backdrop-blur-sm border border-border hover:bg-card transition-colors"
                 >
                   <X weight="bold" size={13} className="text-foreground" />
                 </motion.button>

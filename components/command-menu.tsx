@@ -48,14 +48,14 @@ const ease          = [0.16, 1, 0.3, 1] as const;
 
 const optionCn = cn(
   "flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm text-foreground cursor-pointer",
-  "hover:bg-black/4 transition-colors duration-100",
-  "data-[active=true]:bg-black/5 data-[active=true]:text-foreground",
+  "hover:bg-foreground/[0.04] transition-colors duration-100",
+  "data-[active=true]:bg-foreground/[0.05] data-[active=true]:text-foreground",
   "outline-none select-none"
 );
 
 function OptionIcon({ Icon }: { Icon: React.ElementType }) {
   return (
-    <span className="flex items-center justify-center w-7 h-7 rounded-md bg-black/5 border border-black/6 text-muted-foreground shrink-0">
+    <span className="flex items-center justify-center w-7 h-7 rounded-md bg-foreground/[0.05] border border-border text-muted-foreground shrink-0">
       <Icon weight="duotone" size={14} />
     </span>
   );
@@ -84,7 +84,7 @@ export function CommandMenu() {
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           transition={{ duration: 0.15 }}
-          className="fixed inset-0 z-[200] flex items-start justify-center pt-[16vh] px-4 bg-black/20 backdrop-blur-sm"
+          className="fixed inset-0 z-[200] flex items-start justify-center pt-[16vh] px-4 bg-foreground/20 backdrop-blur-sm"
           onClick={() => setOpen(false)}
         >
           <motion.div
@@ -94,16 +94,16 @@ export function CommandMenu() {
             exit={{ opacity: 0, scale: 0.97, y: -8 }}
             transition={{ duration: 0.2, ease }}
             onClick={(e) => e.stopPropagation()}
-            className="w-full max-w-lg rounded-2xl border border-black/8 bg-white shadow-[0_24px_64px_rgba(0,0,0,0.12)] overflow-hidden"
+            className="w-full max-w-lg rounded-2xl border border-border bg-popover shadow-[0_24px_64px_rgba(0,0,0,0.12)] overflow-hidden"
           >
             <Command open={open} onOpenChange={setOpen} options={allOptions} onSelect={handleSelect}>
-              <div className="flex items-center gap-3 px-4 border-b border-black/6">
+              <div className="flex items-center gap-3 px-4 border-b border-border">
                 <MagnifyingGlass weight="regular" size={15} className="text-muted-foreground shrink-0" />
                 <CommandInput
                   placeholder="Search Mad House..."
                   className="w-full py-4 text-sm bg-transparent text-foreground placeholder:text-muted-foreground outline-none"
                 />
-                <kbd className="hidden sm:inline-flex items-center shrink-0 rounded border border-black/8 bg-black/4 px-1.5 py-0.5 text-[10px] font-mono text-muted-foreground">
+                <kbd className="hidden sm:inline-flex items-center shrink-0 rounded border border-border bg-foreground/[0.04] px-1.5 py-0.5 text-[10px] font-mono text-muted-foreground">
                   esc
                 </kbd>
               </div>
@@ -127,7 +127,7 @@ export function CommandMenu() {
                   ))}
                 </CommandGroup>
 
-                <CommandSeparator className="my-1.5 h-px bg-black/6 mx-2" />
+                <CommandSeparator className="my-1.5 h-px bg-border mx-2" />
 
                 <CommandGroup heading={
                   <span className="px-2 pb-1.5 pt-2 text-[10px] font-medium uppercase tracking-[0.14em] text-muted-foreground block">
@@ -143,7 +143,7 @@ export function CommandMenu() {
                 </CommandGroup>
               </CommandList>
 
-              <div className="border-t border-black/6 px-4 py-2 flex items-center gap-4 text-[10px] font-mono text-muted-foreground">
+              <div className="border-t border-border px-4 py-2 flex items-center gap-4 text-[10px] font-mono text-muted-foreground">
                 {[
                   { keys: ["↑", "↓"], label: "navigate" },
                   { keys: ["↵"],      label: "select"   },
@@ -151,7 +151,7 @@ export function CommandMenu() {
                 ].map(({ keys, label }) => (
                   <span key={label} className="flex items-center gap-1">
                     {keys.map((k) => (
-                      <kbd key={k} className="inline-flex items-center justify-center min-w-[20px] h-5 px-1 rounded border border-black/8 bg-black/4 text-[9px]">
+                      <kbd key={k} className="inline-flex items-center justify-center min-w-[20px] h-5 px-1 rounded border border-border bg-foreground/[0.04] text-[9px]">
                         {k}
                       </kbd>
                     ))}
@@ -172,7 +172,7 @@ export function CommandTrigger() {
   return (
     <button
       onClick={toggle}
-      className="hidden md:flex items-center gap-2 px-3 py-1.5 rounded-full text-xs text-muted-foreground hover:text-foreground hover:bg-black/5 transition-all duration-200"
+      className="hidden md:flex items-center gap-2 px-3 py-1.5 rounded-full text-xs text-muted-foreground hover:text-foreground hover:bg-foreground/[0.05] transition-all duration-200"
       aria-label="Open command menu"
     >
       <MagnifyingGlass weight="regular" size={13} />

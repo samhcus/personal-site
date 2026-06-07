@@ -67,7 +67,7 @@ export function Nav() {
               <a
                 key={link.label}
                 href={link.href}
-                className="px-3 py-1.5 text-sm text-muted-foreground hover:text-foreground active:scale-[0.95] rounded-full hover:bg-black/5 transition-[color,background-color,transform] duration-200"
+                className="px-3 py-1.5 text-sm text-muted-foreground hover:text-foreground active:scale-[0.95] rounded-full hover:bg-foreground/5 transition-[color,background-color,transform] duration-200"
               >
                 {link.label}
               </a>
@@ -81,7 +81,7 @@ export function Nav() {
 
           {/* Mobile: Vaul bottom drawer */}
           <Drawer.Root open={sheetOpen} onOpenChange={setSheetOpen}>
-            <Drawer.Trigger className="md:hidden flex items-center justify-center w-8 h-8 rounded-full hover:bg-black/6 transition-colors text-foreground ml-1">
+            <Drawer.Trigger className="md:hidden flex items-center justify-center w-8 h-8 rounded-full hover:bg-foreground/[0.06] transition-colors text-foreground ml-1">
               <List weight="bold" size={16} />
             </Drawer.Trigger>
             <Drawer.Portal>

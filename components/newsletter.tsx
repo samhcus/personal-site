@@ -41,10 +41,10 @@ export function Newsletter() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.3 }}
           transition={{ duration: 0.7, ease }}
-          className="relative rounded-3xl overflow-hidden border border-primary/12 bg-white px-8 md:px-16 py-20"
+          className="relative rounded-3xl overflow-hidden border border-primary/12 px-8 md:px-16 py-20"
           style={{
             background:
-              "radial-gradient(ellipse at 50% -10%, rgba(240,55,40,0.08) 0%, transparent 60%), #FFFFFF",
+              "radial-gradient(ellipse at 50% -10%, rgba(240,55,40,0.08) 0%, transparent 60%), var(--card)",
           }}
         >
           {/* Decorative top line */}
@@ -81,7 +81,7 @@ export function Newsletter() {
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 required
-                className="h-11 rounded-full px-5 bg-black/4 border-black/10 text-sm flex-1 min-w-0 placeholder:text-muted-foreground/40 focus:border-primary/40 focus:ring-primary/20"
+                className="h-11 rounded-full px-5 bg-foreground/[0.04] border-foreground/[0.1] text-sm flex-1 min-w-0 placeholder:text-muted-foreground/40 focus:border-primary/40 focus:ring-primary/20"
               />
               <PushButton type="submit" disabled={loading}>
                 <ArrowRight weight="bold" size={16} />
