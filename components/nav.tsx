@@ -59,7 +59,7 @@ export function Nav() {
               className="rounded-sm drop-shadow-sm"
               priority
             />
-            <span className="text-sm font-mediumtracking-tight text-foreground">Mad House</span>
+            <span className="text-sm font-black tracking-tight text-foreground">Mad House</span>
           </a>
 
           <div className="hidden md:flex items-center gap-0.5">
@@ -67,7 +67,7 @@ export function Nav() {
               <a
                 key={link.label}
                 href={link.href}
-                className="px-3 py-1.5 text-sm text-muted-foreground hover:text-foreground active:scale-[0.95] rounded-full hover:bg-black/5 transition-[color,background-color,transform] duration-200"
+                className="px-3 py-1.5 text-sm text-muted-foreground hover:text-foreground active:scale-[0.95] rounded-full hover:bg-foreground/5 transition-[color,background-color,transform] duration-200"
               >
                 {link.label}
               </a>
@@ -81,7 +81,7 @@ export function Nav() {
 
           {/* Mobile: Vaul bottom drawer */}
           <Drawer.Root open={sheetOpen} onOpenChange={setSheetOpen}>
-            <Drawer.Trigger className="md:hidden flex items-center justify-center w-8 h-8 rounded-full hover:bg-black/6 transition-colors text-foreground ml-1">
+            <Drawer.Trigger className="md:hidden flex items-center justify-center w-8 h-8 rounded-full hover:bg-foreground/[0.06] transition-colors text-foreground ml-1">
               <List weight="bold" size={16} />
             </Drawer.Trigger>
             <Drawer.Portal>
@@ -95,7 +95,7 @@ export function Nav() {
                       key={link.label}
                       href={link.href}
                       onClick={() => setSheetOpen(false)}
-                      className="text-3xl font-mediumtracking-tight text-foreground active:scale-[0.97] transition-[color,transform] duration-150"
+                      className="text-3xl font-black tracking-tight text-foreground active:scale-[0.97] transition-[color,transform] duration-150"
                     >
                       {link.label}
                     </a>

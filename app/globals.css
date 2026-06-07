@@ -101,6 +101,7 @@ body {
 ::-webkit-scrollbar { width: 4px; height: 4px; }
 ::-webkit-scrollbar-track { background: transparent; }
 ::-webkit-scrollbar-thumb { background: rgba(0,0,0,0.15); border-radius: 9999px; }
+.dark ::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.15); }
 
 /* Marquee */
 @keyframes marquee-left  { from { transform: translateX(0); } to { transform: translateX(-50%); } }
@@ -731,6 +732,37 @@ body {
   to   { transform: translateX(100px);  }
 }
 
+/* Location card — dark mode */
+.dark .lc-card {
+  background: var(--card);
+  box-shadow: 0 0 0 2px rgba(240, 55, 40, 0.25), 1px 4px 5px 4px rgba(0,0,0,0.3);
+}
+
+.dark .lc-inner-card {
+  background: #1e1210;
+  border-color: rgba(240, 55, 40, 0.15);
+}
+
+.dark .lc-bg-map {
+  background-color: #1a0f0d;
+  background-image:
+    linear-gradient(rgba(255,255,255,0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px),
+    linear-gradient(135deg, #2a1510 38%, transparent 38%);
+}
+
+.dark .lc-details {
+  background: #1e1210;
+}
+
+.dark .lc-main-title {
+  color: #F03728;
+}
+
+.dark .lc-second-title {
+  color: rgba(240, 55, 40, 0.6);
+}
+
 /* ─────────────────────────────────────────────
    Social card 3D panel
    ───────────────────────────────────────────── */
@@ -882,6 +914,31 @@ body {
 }
 
 .sc-social-btn:active .sc-btn-svg {
+  fill: black;
+}
+
+.dark .sc-social-btn {
+  background: var(--card);
+  box-shadow: rgba(0, 0, 0, 0.5) 0px 7px 5px -5px;
+}
+
+.dark .sc-btn-svg {
+  fill: #F03728;
+}
+
+.dark .sc-social-btn:hover {
+  background: var(--foreground);
+}
+
+.dark .sc-social-btn:hover .sc-btn-svg {
+  fill: var(--background);
+}
+
+.dark .sc-social-btn:active {
+  background: rgb(255, 234, 0);
+}
+
+.dark .sc-social-btn:active .sc-btn-svg {
   fill: black;
 }
 
@@ -1686,6 +1743,40 @@ body {
   transform: rotate(55deg) scale(1.1);
 }
 
+/* Neo-card — dark mode */
+.dark .neo-card {
+  --nt: #F5F5F4;
+  --nb: #1A1A19;
+  --nsc: rgba(255, 255, 255, 0.1);
+  --npc: #444444;
+}
+
+.dark .neo-card-pattern-grid {
+  background-image:
+    linear-gradient(to right, rgba(255,255,255,0.05) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255,255,255,0.05) 1px, transparent 1px);
+}
+
+.dark .neo-card-actions {
+  border-top-color: rgba(255,255,255,0.12);
+}
+
+.dark .neo-card-actions::before {
+  color: rgba(255,255,255,0.3);
+}
+
+.dark .neo-price-period {
+  color: rgba(255,255,255,0.5);
+}
+
+.dark .neo-stamp {
+  border-color: rgba(255,255,255,0.2);
+}
+
+.dark .neo-feature-icon {
+  box-shadow: 0.2em 0.2em 0 rgba(255,255,255,0.1);
+}
+
 /* ── Cookie banner ── */
 .ck-card {
   max-width: 320px;
@@ -1749,3 +1840,38 @@ body {
   background-color: rgb(55 65 81);
 }
 .ck-accept:focus { outline: 2px solid transparent; outline-offset: 2px; }
+
+/* Cookie banner — dark mode */
+.dark .ck-card {
+  background-color: var(--card);
+  box-shadow: 20px 20px 30px rgba(0,0,0,0.2), 0 0 0 1px rgba(255,255,255,0.06);
+}
+
+.dark .ck-title {
+  color: var(--foreground);
+}
+
+.dark .ck-description {
+  color: var(--muted-foreground);
+}
+
+.dark .ck-description a {
+  color: #60a5fa;
+}
+
+.dark .ck-pref {
+  color: var(--muted-foreground);
+}
+
+.dark .ck-pref:hover {
+  color: var(--foreground);
+}
+
+.dark .ck-accept {
+  background-color: var(--foreground);
+  color: var(--background);
+}
+
+.dark .ck-accept:hover {
+  background-color: #d4d4d0;
+}

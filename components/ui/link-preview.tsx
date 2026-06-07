@@ -93,7 +93,7 @@ export const LinkPreview = ({
               >
                 <a
                   href={url}
-                  className="block p-1 bg-white border border-black/8 rounded-xl shadow-sm"
+                  className="block p-1 bg-card border border-border rounded-xl shadow-sm"
                   style={{ fontSize: 0 }}
                 >
                   <img

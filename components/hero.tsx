@@ -51,7 +51,7 @@ export function Hero() {
             <motion.div {...fadeUp(0.42)} className="flex flex-wrap items-center gap-3">
               <a
                 href="#newsletter"
-                className="group inline-flex items-center gap-2 rounded-full h-12 px-7 font-mediumtext-sm bg-primary hover:bg-primary/88 active:scale-[0.97] text-white transition-[background-color,transform] duration-200"
+                className="group inline-flex items-center gap-2 rounded-full h-12 px-7 font-bold text-sm bg-primary hover:bg-primary/88 active:scale-[0.97] text-white transition-[background-color,transform] duration-200"
               >
                 Get the newsletter
                 <span className="flex items-center justify-center w-5 h-5 rounded-full bg-white/20 transition-transform duration-300 group-hover:translate-x-0.5">
@@ -62,7 +62,7 @@ export function Hero() {
                 <TooltipTrigger>
                   <a
                     href="#ideas"
-                    className="inline-flex items-center rounded-full h-12 px-7 font-mediumtext-sm text-foreground hover:text-primary active:scale-[0.97] border border-black/10 hover:border-primary/30 transition-[color,border-color,transform] duration-200"
+                    className="inline-flex items-center rounded-full h-12 px-7 font-bold text-sm text-foreground hover:text-primary active:scale-[0.97] border border-foreground/10 hover:border-primary/30 transition-[color,border-color,transform] duration-200"
                     tabIndex={-1}
                   >
                     Browse ideas
