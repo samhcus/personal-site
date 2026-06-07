@@ -190,32 +190,57 @@ export function CommunitySection() {
               <EventTicket />
             </motion.div>
 
-            {/* Social — minimal inline */}
+            {/* Social — full 3D card */}
             <motion.div
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: 0.2, ease }}
             >
-              <p className="text-[11px] tracking-[0.14em] text-primary/70 uppercase mb-3">
-                Find us
-              </p>
-              <p className="text-sm text-muted-foreground mb-4 leading-relaxed max-w-[200px]">
-                Follow along for ideas, updates, and behind-the-scenes.
-              </p>
-              <div className="flex items-center gap-2">
-                {socials.map(({ label, href, icon }) => (
-                  <a
-                    key={label}
-                    href={href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="sc-social-btn"
-                    aria-label={label}
-                  >
-                    {icon}
-                  </a>
-                ))}
+              <div className="sc-parent">
+                <div className="sc-card">
+                  <div className="sc-glass" />
+                  <div className="sc-content">
+                    <span className="sc-title">Mad House</span>
+                    <span className="sc-text">
+                      Ideas, guides, and tools for independent builders.
+                    </span>
+                  </div>
+                  <div className="sc-bottom">
+                    <div className="sc-social-btns">
+                      {socials.map(({ label, href, icon }) => (
+                        <a
+                          key={label}
+                          href={href}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="sc-social-btn"
+                          aria-label={label}
+                        >
+                          {icon}
+                        </a>
+                      ))}
+                    </div>
+                    <div className="sc-view-more">
+                      <button className="sc-view-more-btn">Follow us</button>
+                      <svg className="sc-arrow" viewBox="0 0 14 14" aria-hidden="true">
+                        <path d="M3 7h8M7 3l4 4-4 4" />
+                      </svg>
+                    </div>
+                  </div>
+                  <div className="sc-logo">
+                    <span className="sc-circle sc-circle1" />
+                    <span className="sc-circle sc-circle2" />
+                    <span className="sc-circle sc-circle3" />
+                    <span className="sc-circle sc-circle4" />
+                    <span className="sc-circle sc-circle5">
+                      <svg className="sc-logo-svg" viewBox="0 0 24 24" aria-hidden="true">
+                        <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
+                        <polyline points="9 22 9 12 15 12 15 22" />
+                      </svg>
+                    </span>
+                  </div>
+                </div>
               </div>
             </motion.div>
           </div>

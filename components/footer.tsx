@@ -20,7 +20,7 @@ export function Footer() {
           <div className="flex flex-col gap-1.5">
             <div className="flex items-center gap-2">
               <Image src="/logo.png" alt="Mad House" width={20} height={20} className="rounded-sm" />
-              <span className="text-sm font-mediumtracking-tight text-foreground">Mad House</span>
+              <span className="text-sm font-medium tracking-tight text-foreground">Mad House</span>
             </div>
             <div className="flex items-center gap-1 text-xs text-muted-foreground">
               <span>Based in</span>
