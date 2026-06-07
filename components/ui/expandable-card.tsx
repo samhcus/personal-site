@@ -75,7 +75,7 @@ export function ExpandableCardGrid({ cards }: { cards: ExpandableCardItem[] }) {
                   <div>
                     <motion.h3
                       layoutId={`title-${active.title}-${id}`}
-                      className="font-black text-foreground text-base tracking-tight"
+                      className="font-medium text-foreground text-base tracking-tight"
                     >
                       {active.title}
                     </motion.h3>
@@ -94,7 +94,7 @@ export function ExpandableCardGrid({ cards }: { cards: ExpandableCardItem[] }) {
                     href={active.ctaLink}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="shrink-0 px-4 py-2 text-xs rounded-full font-bold bg-primary text-white hover:bg-primary/85 transition-colors whitespace-nowrap"
+                    className="shrink-0 px-4 py-2 text-xs rounded-full font-medium bg-primary text-white hover:bg-primary/85 transition-colors whitespace-nowrap"
                   >
                     {active.ctaText}
                   </motion.a>
@@ -134,7 +134,7 @@ export function ExpandableCardGrid({ cards }: { cards: ExpandableCardItem[] }) {
             <div>
               <motion.h3
                 layoutId={`title-${card.title}-${id}`}
-                className="font-black text-foreground text-sm tracking-tight"
+                className="font-medium text-foreground text-sm tracking-tight"
               >
                 {card.title}
               </motion.h3>

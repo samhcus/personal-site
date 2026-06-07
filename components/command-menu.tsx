@@ -114,7 +114,7 @@ export function CommandMenu() {
                 </CommandEmpty>
 
                 <CommandGroup heading={
-                  <span className="px-2 pb-1.5 pt-2 text-[10px] font-semibold uppercase tracking-[0.14em] text-muted-foreground block">
+                  <span className="px-2 pb-1.5 pt-2 text-[10px] font-medium uppercase tracking-[0.14em] text-muted-foreground block">
                     Navigate
                   </span>
                 }>
@@ -130,7 +130,7 @@ export function CommandMenu() {
                 <CommandSeparator className="my-1.5 h-px bg-black/6 mx-2" />
 
                 <CommandGroup heading={
-                  <span className="px-2 pb-1.5 pt-2 text-[10px] font-semibold uppercase tracking-[0.14em] text-muted-foreground block">
+                  <span className="px-2 pb-1.5 pt-2 text-[10px] font-medium uppercase tracking-[0.14em] text-muted-foreground block">
                     Actions
                   </span>
                 }>

@@ -31,7 +31,7 @@ const tagColors: Record<string, string> = {
 function MarqueeItem({ tag, text }: { tag: string; text: string }) {
   return (
     <span className="inline-flex items-center gap-2 px-5 whitespace-nowrap select-none">
-      <span className={`text-xs font-bold tracking-widest uppercase ${tagColors[tag]}`}>
+      <span className={`text-xs font-medium tracking-widest uppercase ${tagColors[tag]}`}>
         {tag}
       </span>
       <span className="text-foreground/70 text-sm font-medium">{text}</span>
@@ -69,10 +69,10 @@ export function ContentFeed() {
           viewport={{ once: true, amount: 0.3 }}
           transition={{ duration: 0.6, ease }}
         >
-          <span className="text-[11px] font-bold tracking-[0.14em] text-primary/70 uppercase">
+          <span className="text-[11px] font-medium tracking-[0.14em] text-primary/70 uppercase">
             In the pipeline
           </span>
-          <h2 className="mt-2 text-4xl md:text-5xl font-black tracking-tight text-foreground">
+          <h2 className="mt-2 text-4xl md:text-5xl font-medium tracking-tight text-foreground">
             What we&apos;re making.
           </h2>
         </motion.div>
@@ -99,7 +99,7 @@ export function ContentFeed() {
         >
           {stats.map(({ value, label }) => (
             <div key={label} className="flex flex-col items-center justify-center py-8 px-4 bg-card">
-              <span className="text-3xl md:text-4xl font-black tracking-tight text-foreground">
+              <span className="text-3xl md:text-4xl font-medium tracking-tight text-foreground">
                 {value}
               </span>
               <span className="mt-1 text-xs text-muted-foreground">{label}</span>

@@ -59,7 +59,7 @@ export function Nav() {
               className="rounded-sm drop-shadow-sm"
               priority
             />
-            <span className="text-sm font-black tracking-tight text-foreground">Mad House</span>
+            <span className="text-sm font-mediumtracking-tight text-foreground">Mad House</span>
           </a>
 
           <div className="hidden md:flex items-center gap-0.5">
@@ -95,7 +95,7 @@ export function Nav() {
                       key={link.label}
                       href={link.href}
                       onClick={() => setSheetOpen(false)}
-                      className="text-3xl font-black tracking-tight text-foreground active:scale-[0.97] transition-[color,transform] duration-150"
+                      className="text-3xl font-mediumtracking-tight text-foreground active:scale-[0.97] transition-[color,transform] duration-150"
                     >
                       {link.label}
                     </a>

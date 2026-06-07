@@ -16,7 +16,7 @@ export function BallpitSection() {
           transition={{ duration: 0.6, ease }}
           className="mb-8"
         >
-          <h2 className="text-4xl md:text-5xl font-black tracking-tight text-foreground">
+          <h2 className="text-4xl md:text-5xl font-medium tracking-tight text-foreground">
             Sandbox
           </h2>
           <p className="mt-2 text-muted-foreground text-sm">Push things around.</p>

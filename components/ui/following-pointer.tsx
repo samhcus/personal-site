@@ -80,7 +80,7 @@ export const FollowPointer = ({
       initial={{ scale: 0.7, opacity: 0 }}
       animate={{ scale: 1, opacity: 1 }}
       exit={{ scale: 0.7, opacity: 0 }}
-      className="min-w-max rounded-full bg-foreground px-2.5 py-1 text-[11px] font-bold text-background whitespace-nowrap"
+      className="min-w-max rounded-full bg-foreground px-2.5 py-1 text-[11px] font-medium text-background whitespace-nowrap"
     >
       {title ?? "Mad House"}
     </motion.div>

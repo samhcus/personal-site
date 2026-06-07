@@ -47,7 +47,7 @@ export function IncomingSection() {
           transition={{ duration: 0.6, ease }}
           className="mb-10"
         >
-          <h2 className="text-4xl md:text-5xl font-black tracking-tight text-foreground">
+          <h2 className="text-4xl md:text-5xl font-medium tracking-tight text-foreground">
             Incoming
           </h2>
           <p className="mt-2 text-muted-foreground text-sm">Tap a card to open it.</p>

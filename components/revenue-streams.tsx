@@ -57,7 +57,7 @@ export function RevenueStreams() {
           transition={{ duration: 0.6, ease }}
           className="mb-12"
         >
-          <h2 className="text-4xl md:text-5xl font-black tracking-tight text-foreground">
+          <h2 className="text-4xl md:text-5xl font-medium tracking-tight text-foreground">
             Ways in
           </h2>
           <p className="mt-3 text-muted-foreground max-w-sm">
@@ -84,7 +84,7 @@ export function RevenueStreams() {
                       {s.badge}
                     </Badge>
                   </div>
-                  <CardTitle className="font-black text-foreground tracking-tight">
+                  <CardTitle className="font-medium text-foreground tracking-tight">
                     {s.title}
                   </CardTitle>
                   <CardDescription className="text-sm leading-relaxed">
@@ -94,7 +94,7 @@ export function RevenueStreams() {
                 <CardFooter className="px-7 py-4 bg-transparent border-t-0">
                   <a
                     href={s.href}
-                    className="inline-flex items-center text-sm font-semibold text-primary hover:text-primary/80 transition-colors gap-1 group"
+                    className="inline-flex items-center text-sm font-medium text-primary hover:text-primary/80 transition-colors gap-1 group"
                   >
                     {s.cta}
                     <span className="transition-transform duration-200 group-hover:translate-x-0.5">→</span>

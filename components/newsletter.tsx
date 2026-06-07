@@ -51,12 +51,12 @@ export function Newsletter() {
           <div className="absolute top-0 left-1/2 -translate-x-1/2 w-24 h-0.5 bg-primary/40 rounded-full" />
 
           <div className="max-w-xl mx-auto text-center">
-            <div className="inline-flex items-center gap-1.5 text-[11px] font-bold tracking-[0.14em] text-primary/70 uppercase mb-5">
+            <div className="inline-flex items-center gap-1.5 text-[11px] font-medium tracking-[0.14em] text-primary/70 uppercase mb-5">
               <Star weight="fill" size={10} />
               Free newsletter
             </div>
 
-            <h2 className="text-4xl md:text-5xl font-black tracking-tight text-foreground leading-[0.95]">
+            <h2 className="text-4xl md:text-5xl font-medium tracking-tight text-foreground leading-[0.95]">
               In your inbox.
               <br />
               Every week.

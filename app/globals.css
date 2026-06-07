@@ -1412,7 +1412,7 @@ body {
   box-shadow: 0.7em 0.7em 0 var(--nsc), inset 0 0 0 0.15em rgba(0,0,0,0.05);
   transition: transform 0.4s cubic-bezier(0.23, 1, 0.32, 1), box-shadow 0.4s cubic-bezier(0.23, 1, 0.32, 1);
   overflow: hidden;
-  font-family: ui-sans-serif, system-ui, sans-serif;
+  font-family: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
   transform-origin: center;
   font-size: 16px;
 }
@@ -1441,7 +1441,6 @@ body {
   top: 0.4em; right: 0.4em;
   color: var(--nt);
   font-size: 1.2em;
-  font-weight: bold;
   z-index: 2;
 }
 .neo-card-pattern-grid {
@@ -1472,7 +1471,7 @@ body {
   padding: 1.4em;
   background: var(--np);
   color: var(--nb);
-  font-weight: 800;
+  font-weight: 500;
   font-size: 1.2em;
   display: flex;
   justify-content: space-between;
@@ -1495,7 +1494,7 @@ body {
   background: var(--nb);
   color: var(--nt);
   font-size: 0.6em;
-  font-weight: 800;
+  font-weight: 500;
   padding: 0.4em 0.8em;
   border: 0.15em solid var(--nt);
   border-radius: 0.3em;
@@ -1555,7 +1554,7 @@ body {
 }
 .neo-feature-text {
   font-size: 0.82em;
-  font-weight: 600;
+  font-weight: 500;
   color: var(--nt);
 }
 .neo-card-actions {
@@ -1581,7 +1580,7 @@ body {
 .neo-price {
   position: relative;
   font-size: 1.8em;
-  font-weight: 800;
+  font-weight: 500;
   color: var(--nt);
 }
 .neo-price::before {
@@ -1595,14 +1594,14 @@ body {
 }
 .neo-price-currency {
   font-size: 0.6em;
-  font-weight: 700;
+  font-weight: 400;
   vertical-align: top;
   margin-right: 0.1em;
 }
 .neo-price-period {
   display: block;
   font-size: 0.4em;
-  font-weight: 600;
+  font-weight: 400;
   color: rgba(0,0,0,0.55);
   margin-top: 0.2em;
 }
@@ -1611,7 +1610,7 @@ body {
   background: var(--ns);
   color: var(--nb);
   font-size: 0.9em;
-  font-weight: 700;
+  font-weight: 500;
   padding: 0.7em 1.2em;
   border: 0.2em solid var(--nt);
   border-radius: 0.4em;
@@ -1686,3 +1685,67 @@ body {
 .neo-card:hover .neo-accent-shape {
   transform: rotate(55deg) scale(1.1);
 }
+
+/* ── Cookie banner ── */
+.ck-card {
+  max-width: 320px;
+  padding: 1rem;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 20px 20px 30px rgba(0, 0, 0, .05), 0 0 0 1px rgba(0,0,0,0.06);
+}
+.ck-title {
+  font-weight: 500;
+  color: rgb(31 41 55);
+}
+.ck-description {
+  margin-top: 1rem;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  color: rgb(75 85 99);
+}
+.ck-description a {
+  color: rgb(59 130 246);
+}
+.ck-description a:hover {
+  text-decoration-line: underline;
+}
+.ck-actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 1rem;
+  column-gap: 1rem;
+  flex-shrink: 0;
+}
+.ck-pref {
+  font-size: 0.75rem;
+  line-height: 1rem;
+  color: rgb(31 41 55);
+  text-decoration-line: underline;
+  transition: color .3s cubic-bezier(0.4, 0, 0.2, 1);
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+  padding: 0;
+}
+.ck-pref:hover {
+  color: rgb(156 163 175);
+}
+.ck-pref:focus { outline: 2px solid transparent; outline-offset: 2px; }
+.ck-accept {
+  font-size: 0.75rem;
+  line-height: 1rem;
+  background-color: rgb(17 24 39);
+  font-weight: 500;
+  border-radius: 0.5rem;
+  color: #fff;
+  padding: 0.625rem 1rem;
+  border: none;
+  transition: background-color .15s cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
+}
+.ck-accept:hover {
+  background-color: rgb(55 65 81);
+}
+.ck-accept:focus { outline: 2px solid transparent; outline-offset: 2px; }

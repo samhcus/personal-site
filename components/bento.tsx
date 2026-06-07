@@ -72,7 +72,7 @@ export function Bento() {
           transition={{ duration: 0.6, ease }}
           className="mb-12"
         >
-          <h2 className="text-4xl md:text-5xl font-black tracking-tight text-foreground">
+          <h2 className="text-4xl md:text-5xl font-medium tracking-tight text-foreground">
             What we ship
           </h2>
         </motion.div>
@@ -105,7 +105,7 @@ export function Bento() {
                   <TooltipContent>{f.tooltip}</TooltipContent>
                 </Tooltip>
                 <div>
-                  <h3 className={`text-lg font-black tracking-tight ${f.textClass}`}>
+                  <h3 className={`text-lg font-medium tracking-tight ${f.textClass}`}>
                     {f.label}
                   </h3>
                   <p className={`mt-2 text-sm leading-relaxed ${f.descClass}`}>
