@@ -5,15 +5,9 @@ import { motion } from "motion/react";
 import { Input } from "@/components/ui/input";
 import { PushButton } from "@/components/ui/push-button";
 import { toast } from "sonner";
-import { ArrowRight, Star } from "@phosphor-icons/react";
+import { ArrowRight } from "@phosphor-icons/react";
 
 const ease = [0.16, 1, 0.3, 1] as const;
-
-const perks = [
-  "Ideas to build this weekend",
-  "Honest breakdowns, no pitch decks",
-  "Tools we actually use",
-];
 
 export function Newsletter() {
   const [email, setEmail] = useState("");
@@ -47,29 +41,18 @@ export function Newsletter() {
               "radial-gradient(ellipse at 50% -10%, rgba(240,55,40,0.08) 0%, transparent 60%), var(--card)",
           }}
         >
-          {/* Decorative top line */}
           <div className="absolute top-0 left-1/2 -translate-x-1/2 w-24 h-0.5 bg-primary/40 rounded-full" />
 
           <div className="max-w-xl mx-auto text-center">
-            <div className="inline-flex items-center gap-1.5 text-[11px] font-medium tracking-[0.14em] text-primary/70 uppercase mb-5">
-              <Star weight="fill" size={10} />
-              Free newsletter
-            </div>
-
             <h2 className="text-4xl md:text-5xl font-medium tracking-tight text-foreground leading-[0.95]">
-              In your inbox.
+              Get inside
               <br />
-              Every week.
+              Mad House.
             </h2>
 
-            <div className="mt-6 flex flex-col sm:flex-row items-center justify-center gap-x-6 gap-y-2">
-              {perks.map((p) => (
-                <div key={p} className="flex items-center gap-1.5 text-sm text-muted-foreground">
-                  <ArrowRight weight="bold" size={11} className="text-primary flex-shrink-0" />
-                  {p}
-                </div>
-              ))}
-            </div>
+            <p className="mt-5 text-sm text-muted-foreground/70 max-w-xs mx-auto leading-relaxed">
+              {"A small, close rotation. What I'm building, what I'm learning, what ships next."}
+            </p>
 
             <form
               onSubmit={handleSubmit}
@@ -89,7 +72,7 @@ export function Newsletter() {
             </form>
 
             <p className="mt-4 text-xs text-muted-foreground/50">
-              Free forever. Unsubscribe anytime.
+              Small list. High signal. Unsubscribe anytime.
             </p>
           </div>
         </motion.div>
