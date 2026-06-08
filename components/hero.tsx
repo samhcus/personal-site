@@ -1,7 +1,6 @@
 "use client";
 
 import { motion } from "motion/react";
-import { QuoteRotator } from "@/components/quote-rotator";
 
 const ease = [0.16, 1, 0.3, 1] as const;
 
@@ -38,12 +37,15 @@ export function Hero() {
             Samuel.
           </motion.p>
 
-          <motion.div {...fadeUp(0.2)}>
-            <QuoteRotator />
-          </motion.div>
+          <motion.p
+            {...fadeUp(0.18)}
+            className="text-xs font-mono text-muted-foreground/50 tracking-wide"
+          >
+            ship in the open. stay mad.
+          </motion.p>
 
           <motion.div
-            {...fadeUp(0.32)}
+            {...fadeUp(0.28)}
             className="flex flex-wrap items-center gap-3"
           >
             <a
@@ -56,7 +58,7 @@ export function Hero() {
               href="#work"
               className="inline-flex items-center rounded-full h-12 px-7 font-medium text-sm text-foreground border border-foreground/[0.12] hover:border-primary/30 hover:text-primary transition-colors duration-200 active:scale-[0.97]"
             >
-              See the work
+              See the ships
             </a>
           </motion.div>
         </div>
