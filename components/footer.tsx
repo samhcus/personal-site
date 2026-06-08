@@ -3,10 +3,15 @@ import { Separator } from "@/components/ui/separator";
 import { LocationCard } from "@/components/ui/location-card";
 
 const nav = [
-  { label: "Ideas",    href: "#ideas"    },
-  { label: "Guides",   href: "#guides"   },
-  { label: "Products", href: "#products" },
-  { label: "About",    href: "#about"    },
+  { label: "Ships",      href: "#work"       },
+  { label: "Newsletter", href: "#newsletter" },
+  { label: "Studio",     href: "/studio"     },
+];
+
+const social = [
+  { label: "X",         href: "https://x.com/madebymadhouse"         },
+  { label: "Instagram", href: "https://instagram.com/madebymadhouse"  },
+  { label: "YouTube",   href: "https://youtube.com/@madebymadhouse"   },
 ];
 
 export function Footer() {
@@ -28,7 +33,7 @@ export function Footer() {
             </div>
           </div>
 
-          {/* Nav + copyright */}
+          {/* Nav + social + copyright */}
           <div className="flex flex-col sm:items-end gap-3">
             <nav className="flex flex-wrap gap-x-5 gap-y-1.5">
               {nav.map((item) => (
@@ -41,6 +46,19 @@ export function Footer() {
                 </a>
               ))}
             </nav>
+            <div className="flex flex-wrap gap-x-5 gap-y-1.5">
+              {social.map((item) => (
+                <a
+                  key={item.label}
+                  href={item.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-xs text-muted-foreground/50 hover:text-foreground transition-colors"
+                >
+                  {item.label}
+                </a>
+              ))}
+            </div>
             <p className="text-xs text-muted-foreground/50">
               &copy; {new Date().getFullYear()} Mad House
             </p>
