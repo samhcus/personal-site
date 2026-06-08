@@ -4,16 +4,15 @@ import { useState, useEffect } from "react";
 import { motion } from "motion/react";
 import Image from "next/image";
 import { Drawer } from "vaul";
-import { CommandTrigger } from "@/components/command-menu";
 import { RetroThemeToggle } from "@/components/ui/retro-theme-toggle";
 import { cn } from "@/lib/utils";
 import { useCommandMenu } from "@/lib/command-menu-context";
 import { List } from "@phosphor-icons/react";
 
 const links = [
-  { label: "Ideas",    href: "#ideas"    },
-  { label: "Guides",   href: "#guides"   },
-  { label: "Products", href: "#products" },
+  { label: "Ships",      href: "#work"        },
+  { label: "Newsletter", href: "#newsletter"  },
+  { label: "Studio",     href: "/studio"      },
 ];
 
 const ease = [0.16, 1, 0.3, 1] as const;
@@ -62,57 +61,39 @@ export function Nav() {
             <span className="text-sm font-medium tracking-tight text-foreground">Mad House</span>
           </a>
 
-          <div className="hidden md:flex items-center gap-0.5">
-            {links.map((link) => (
-              <a
-                key={link.label}
-                href={link.href}
-                className="px-3 py-1.5 text-sm text-muted-foreground hover:text-foreground active:scale-[0.95] rounded-full hover:bg-foreground/5 transition-[color,background-color,transform] duration-200"
-              >
-                {link.label}
-              </a>
-            ))}
-          </div>
-
-          <div className="hidden md:flex items-center gap-1 pl-1">
-            <CommandTrigger />
+          <div className="flex items-center gap-1 pl-1">
             <RetroThemeToggle />
-          </div>
-
-          {/* Mobile: Vaul bottom drawer */}
-          <Drawer.Root open={sheetOpen} onOpenChange={setSheetOpen}>
-            <Drawer.Trigger className="md:hidden flex items-center justify-center w-8 h-8 rounded-full hover:bg-foreground/[0.06] transition-colors text-foreground ml-1">
-              <List weight="bold" size={16} />
-            </Drawer.Trigger>
-            <Drawer.Portal>
-              <Drawer.Overlay className="fixed inset-0 bg-black/40 z-40" />
-              <Drawer.Content className="fixed bottom-0 left-0 right-0 z-50 flex flex-col rounded-t-2xl bg-white dark:bg-zinc-900 outline-none">
-                <Drawer.Handle className="mx-auto mt-3 mb-1 h-1.5 w-12 rounded-full bg-black/10 dark:bg-white/10" />
-                <div className="flex flex-col items-center gap-5 px-6 pt-4 pb-12">
-                  <Image src="/logo.png" alt="Mad House" width={56} height={56} className="mb-1 drop-shadow-md" />
-                  {links.map((link) => (
-                    <a
-                      key={link.label}
-                      href={link.href}
-                      onClick={() => setSheetOpen(false)}
-                      className="text-3xl font-medium tracking-tight text-foreground active:scale-[0.97] transition-[color,transform] duration-150"
+            <Drawer.Root open={sheetOpen} onOpenChange={setSheetOpen}>
+              <Drawer.Trigger className="flex items-center justify-center w-8 h-8 rounded-full hover:bg-foreground/[0.06] transition-colors text-foreground">
+                <List weight="bold" size={16} />
+              </Drawer.Trigger>
+              <Drawer.Portal>
+                <Drawer.Overlay className="fixed inset-0 bg-black/40 z-40" />
+                <Drawer.Content className="fixed bottom-0 left-0 right-0 z-50 flex flex-col rounded-t-2xl bg-white dark:bg-zinc-900 outline-none">
+                  <Drawer.Handle className="mx-auto mt-3 mb-1 h-1.5 w-12 rounded-full bg-black/10 dark:bg-white/10" />
+                  <div className="flex flex-col items-center gap-5 px-6 pt-4 pb-12">
+                    <Image src="/logo.png" alt="Mad House" width={56} height={56} className="mb-1 drop-shadow-md" />
+                    {links.map((link) => (
+                      <a
+                        key={link.label}
+                        href={link.href}
+                        onClick={() => setSheetOpen(false)}
+                        className="text-3xl font-medium tracking-tight text-foreground active:scale-[0.97] transition-[color,transform] duration-150"
+                      >
+                        {link.label}
+                      </a>
+                    ))}
+                    <button
+                      onClick={() => { setSheetOpen(false); toggle(); }}
+                      className="mt-2 text-sm text-muted-foreground active:scale-[0.97] transition-[color,transform] duration-150"
                     >
-                      {link.label}
-                    </a>
-                  ))}
-                  <button
-                    onClick={() => { setSheetOpen(false); toggle(); }}
-                    className="mt-2 text-sm text-muted-foreground active:scale-[0.97] transition-[color,transform] duration-150"
-                  >
-                    Search ⌘K
-                  </button>
-                  <div className="mt-2">
-                    <RetroThemeToggle />
+                      Search ⌘K
+                    </button>
                   </div>
-                </div>
-              </Drawer.Content>
-            </Drawer.Portal>
-          </Drawer.Root>
+                </Drawer.Content>
+              </Drawer.Portal>
+            </Drawer.Root>
+          </div>
         </motion.nav>
       </header>
     </>
