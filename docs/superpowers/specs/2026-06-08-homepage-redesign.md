@@ -44,13 +44,19 @@ Reference bar: Emil Kowalski for craft and polish. Marc Lou for the one-person-s
 **Content:**
 - Brand name: "Mad House" in large display type. Title case, not all-caps.
 - Author line: "Samuel." just the name with a period. Small, below the brand name.
-- One-liner beneath that: a short honest statement about what this place is. TBD with Samuel but something like "Building things in the open." Not a tagline. Not a slogan.
-- A single rotating/cycling word or phrase that communicates the range without being a bullet list. Cycles through what gets built here (tools, guides, video, art, etc.). Smooth transition, not a ticker. Uses `transitions-dev` for the swap animation.
+- Quote rotator (see below) sits beneath the author line, replacing the one-liner.
 - Two CTAs: primary "Get inside" (scrolls to newsletter), secondary "See the work" (scrolls to work section). Rounded, minimal.
+
+**Quote rotator:**
+Rotating quotes from influential people, each styled as a tweet card. The card shows: avatar (real, not placeholder), name, handle, and the quote text. Cards cycle on an interval or on user interaction. Transition is a smooth vertical slide (new card comes up, old slides out) using `transitions-dev`. The tweet card visual language uses Mad House's design system, not Twitter blue or any platform chrome.
+
+Quotes are real, sourced from Samuel. Needs: a list of 3-6 quotes with attribution (name, handle, quote text, avatar image). These are content, not design decisions. Implementation uses a static array; swap quotes by editing the data.
+
+Empty state for quote rotator: one honest placeholder card. No fake names, no fake handles. Something like name "tbd", handle "@tbd", quote "A quote that moves you goes here." styled identically to real cards so the layout is correct.
 
 **What is removed:** The 2-column grid, the right-side illustration, the "Est. 2025 · Creative Tools" label, the "4 tools · Physics-based · Export-ready" stat line, the lanyard badge.
 
-**Animation:** Fade-up stagger on load (keep existing pattern, it works). The cycling word uses a smooth vertical slide-in/out, not a crossfade.
+**Animation:** Fade-up stagger on load (keep existing pattern, it works). Quote rotator uses smooth vertical slide-in/out on each swap, not a crossfade. Interval: 5 seconds.
 
 ---
 
@@ -104,11 +110,13 @@ The tiles have the same visual weight as real tiles. When content arrives, swap 
 
 **Goal:** Pull people into the Mad House world. Tight-knit, high-signal, not a generic newsletter.
 
-**Positioning:** "Get inside Mad House." Not "get the newsletter." The audience and cadence are TBD but the shell is honest about that.
+**Positioning:** "Get inside Mad House." Not "get the newsletter."
 
-**Design:** One input (email), one button ("Get in"). Short copy beneath explaining what this is once the audience is defined. No fake subscriber count.
+**Audience:** A tight-knit rotation of people who want close access to Samuel building and shipping under Mad House, plus the value that comes out of it. Early access, behind the scenes, direct signal.
 
-**Empty state:** The form works. The copy says something honest about what's coming.
+**Design:** One input (email), one button ("Get in"). Copy reads something like: "A small, close rotation. What I'm building, what I'm learning, what ships next." No fake subscriber count. No social proof padding.
+
+**Empty state:** The form works immediately. Copy is honest and live from day one.
 
 ---
 
