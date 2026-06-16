@@ -63,7 +63,7 @@ export function SamuelWidget() {
             )}
             <button
               onClick={() => setOpen(false)}
-              className="absolute top-2 right-2 w-6 h-6 flex items-center justify-center rounded-full bg-foreground/10 text-foreground/50 hover:bg-foreground/20 transition-colors text-[10px] font-medium"
+              className="absolute top-2 right-2 w-6 h-6 flex items-center justify-center rounded-lg bg-foreground/10 text-foreground/50 hover:bg-foreground/20 transition-colors text-[10px] font-medium"
               aria-label="Close"
             >
               x
@@ -74,7 +74,7 @@ export function SamuelWidget() {
 
       <button
         onClick={() => setOpen((o) => !o)}
-        className="fixed bottom-4 right-4 z-50 w-12 h-12 rounded-full overflow-hidden border-2 border-foreground/10 hover:border-primary/40 transition-colors duration-200 active:scale-[0.97] shadow-lg bg-foreground/[0.04]"
+        className="fixed bottom-4 right-4 z-50 w-12 h-12 rounded-xl overflow-hidden border-2 border-foreground/10 hover:border-primary/40 transition-colors duration-200 active:scale-[0.97] shadow-lg bg-foreground/[0.04]"
         aria-label="Meet Samuel"
       >
         {GIF_URL ? (

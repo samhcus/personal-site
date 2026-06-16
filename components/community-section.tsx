@@ -62,7 +62,7 @@ export function CommunitySection() {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label={label}
-                className="w-10 h-10 flex items-center justify-center rounded-full border border-foreground/[0.08] text-muted-foreground hover:text-foreground hover:border-foreground/20 transition-colors duration-200 active:scale-[0.97]"
+                className="w-10 h-10 flex items-center justify-center rounded-xl border border-foreground/[0.08] text-muted-foreground hover:text-foreground hover:border-foreground/20 transition-colors duration-200 active:scale-[0.97]"
               >
                 {icon}
               </a>

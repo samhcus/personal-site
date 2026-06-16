@@ -43,7 +43,7 @@ export function Nav() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, ease }}
           className={cn(
-            "flex items-center gap-1 rounded-full px-2 py-1.5 transition-[background-color,border-color,box-shadow,backdrop-filter] duration-[400ms]",
+            "flex items-center gap-1 rounded-2xl px-2 py-1.5 transition-[background-color,border-color,box-shadow,backdrop-filter] duration-[400ms]",
             scrolled
               ? "bg-white/90 dark:bg-zinc-900/90 backdrop-blur-xl border border-black/10 dark:border-white/10 shadow-[0_4px_24px_rgba(0,0,0,0.08)]"
               : "bg-white/70 dark:bg-zinc-900/60 backdrop-blur-md border border-black/8 dark:border-white/8"
@@ -64,7 +64,7 @@ export function Nav() {
           <div className="flex items-center gap-1 pl-1">
             <RetroThemeToggle />
             <Drawer.Root open={sheetOpen} onOpenChange={setSheetOpen}>
-              <Drawer.Trigger className="flex items-center justify-center w-8 h-8 rounded-full hover:bg-foreground/[0.06] transition-colors text-foreground">
+              <Drawer.Trigger className="flex items-center justify-center w-8 h-8 rounded-xl hover:bg-foreground/[0.06] transition-colors text-foreground">
                 <List weight="bold" size={16} />
               </Drawer.Trigger>
               <Drawer.Portal>

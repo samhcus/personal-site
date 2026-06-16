@@ -50,13 +50,13 @@ export function Hero() {
           >
             <a
               href="#newsletter"
-              className="inline-flex items-center gap-2 rounded-full h-12 px-7 font-medium text-sm bg-primary text-white transition-colors duration-200 hover:bg-primary/85 active:scale-[0.97]"
+              className="inline-flex items-center gap-2 rounded-xl h-12 px-7 font-medium text-sm bg-primary text-white transition-colors duration-200 hover:bg-primary/85 active:scale-[0.97]"
             >
               Get inside
             </a>
             <a
               href="#work"
-              className="inline-flex items-center rounded-full h-12 px-7 font-medium text-sm text-foreground border border-foreground/[0.12] hover:border-primary/30 hover:text-primary transition-colors duration-200 active:scale-[0.97]"
+              className="inline-flex items-center rounded-xl h-12 px-7 font-medium text-sm text-foreground border border-foreground/[0.12] hover:border-primary/30 hover:text-primary transition-colors duration-200 active:scale-[0.97]"
             >
               See the ships
             </a>

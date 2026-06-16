@@ -172,7 +172,7 @@ export function CommandTrigger() {
   return (
     <button
       onClick={toggle}
-      className="hidden md:flex items-center gap-2 px-3 py-1.5 rounded-full text-xs text-muted-foreground hover:text-foreground hover:bg-foreground/[0.05] transition-all duration-200"
+      className="hidden md:flex items-center gap-2 px-3 py-1.5 rounded-xl text-xs text-muted-foreground hover:text-foreground hover:bg-foreground/[0.05] transition-all duration-200"
       aria-label="Open command menu"
     >
       <MagnifyingGlass weight="regular" size={13} />

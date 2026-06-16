@@ -64,7 +64,7 @@ export function Newsletter() {
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 required
-                className="h-11 rounded-full px-5 bg-foreground/[0.04] border-foreground/[0.1] text-sm flex-1 min-w-0 placeholder:text-muted-foreground/40 focus:border-primary/40 focus:ring-primary/20"
+                className="h-11 rounded-xl px-5 bg-foreground/[0.04] border-foreground/[0.1] text-sm flex-1 min-w-0 placeholder:text-muted-foreground/40 focus:border-primary/40 focus:ring-primary/20"
               />
               <PushButton type="submit" disabled={loading}>
                 <ArrowRight weight="bold" size={16} />

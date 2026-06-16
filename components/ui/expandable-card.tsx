@@ -57,7 +57,7 @@ export function ExpandableCardGrid({ cards }: { cards: ExpandableCardItem[] }) {
                   animate={{ opacity: 1 }}
                   exit={{ opacity: 0 }}
                   onClick={() => setActive(null)}
-                  className="absolute top-3 right-3 z-10 flex items-center justify-center w-8 h-8 rounded-full bg-card/90 backdrop-blur-sm border border-border hover:bg-card transition-colors"
+                  className="absolute top-3 right-3 z-10 flex items-center justify-center w-8 h-8 rounded-xl bg-card/90 backdrop-blur-sm border border-border hover:bg-card transition-colors"
                 >
                   <X weight="bold" size={13} className="text-foreground" />
                 </motion.button>
@@ -94,7 +94,7 @@ export function ExpandableCardGrid({ cards }: { cards: ExpandableCardItem[] }) {
                     href={active.ctaLink}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="shrink-0 px-4 py-2 text-xs rounded-full font-medium bg-primary text-white hover:bg-primary/85 transition-colors whitespace-nowrap"
+                    className="shrink-0 px-4 py-2 text-xs rounded-xl font-medium bg-primary text-white hover:bg-primary/85 transition-colors whitespace-nowrap"
                   >
                     {active.ctaText}
                   </motion.a>
