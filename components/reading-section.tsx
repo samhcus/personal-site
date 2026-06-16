@@ -1,12 +1,8 @@
 "use client";
 
 import Image from "next/image";
-import { motion } from "motion/react";
 import { reading } from "@/lib/reading";
 import { Reveal } from "@/components/reveal";
-import { Cursor } from "@/components/motion-primitives/cursor";
-
-const TILT = [-2.5, 1.8];
 
 export function ReadingSection() {
   return (
@@ -18,33 +14,21 @@ export function ReadingSection() {
           </h2>
         </Reveal>
 
-        <div className="relative mt-8 flex flex-wrap gap-6">
-          <Cursor
-            attachToParent
-            springConfig={{ bounce: 0.01 }}
-            variants={{
-              initial: { scale: 0.5, opacity: 0 },
-              animate: { scale: 1, opacity: 1 },
-              exit: { scale: 0.5, opacity: 0 },
-            }}
-            transition={{ duration: 0.2 }}
-          >
+        <Reveal index={1}>
+          <div className="mt-6 w-full overflow-hidden rounded-xl border border-border">
             <img
               src="/reading/reading.gif"
-              alt=""
-              className="h-20 w-20 rounded-full object-cover ring-2 ring-background shadow-xl"
+              alt="reading on a train"
+              className="w-full h-auto object-cover"
             />
-          </Cursor>
+          </div>
+        </Reveal>
 
+        <div className="mt-6 flex flex-wrap justify-center gap-6">
           {reading.map((book, i) => (
-            <Reveal key={book.title} index={Math.min(i, 4)}>
-              <motion.figure
-                className="w-[130px]"
-                initial={{ rotate: TILT[i % TILT.length] }}
-                whileHover={{ rotate: 0, y: -10 }}
-                transition={{ type: "spring", stiffness: 280, damping: 22 }}
-              >
-                <div className="overflow-hidden rounded-lg border border-border shadow-[0_8px_32px_rgba(0,0,0,0.10)] hover:shadow-[0_20px_48px_rgba(0,0,0,0.18)] transition-shadow duration-300">
+            <Reveal key={book.title} index={i + 2}>
+              <figure className="group w-[130px]">
+                <div className="overflow-hidden rounded-lg border border-border shadow-[0_8px_24px_rgba(0,0,0,0.08)] transition-transform duration-200 ease-out group-hover:-translate-y-1">
                   <Image
                     src={book.cover}
                     alt={`${book.title} cover`}
@@ -61,7 +45,7 @@ export function ReadingSection() {
                     {book.author}
                   </p>
                 </figcaption>
-              </motion.figure>
+              </figure>
             </Reveal>
           ))}
         </div>

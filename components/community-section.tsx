@@ -1,74 +1,65 @@
 "use client";
 
-import { motion } from "motion/react";
+import { ArrowUpRight } from "@phosphor-icons/react";
+import { Reveal } from "@/components/reveal";
+import { DISCORD_INVITE, SITE_EMAIL } from "@/lib/socials";
+import { PulsatingButton } from "@/components/ui/pulsating-button";
+import { MagneticButton } from "@/components/ui/magnetic-button";
 
-const ease = [0.16, 1, 0.3, 1] as const;
-
-const socials = [
-  {
-    label: "X / Twitter",
-    href: "#",
-    icon: (
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-        <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
-      </svg>
-    ),
-  },
-  {
-    label: "Instagram",
-    href: "#",
-    icon: (
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-        <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
-      </svg>
-    ),
-  },
-  {
-    label: "YouTube",
-    href: "#",
-    icon: (
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-        <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" />
-      </svg>
-    ),
-  },
-];
+function DiscordIcon({ size = 16 }: { size?: number }) {
+  return (
+    <svg
+      width={size}
+      height={size}
+      viewBox="0 -28.5 256 256"
+      fill="currentColor"
+      aria-hidden
+    >
+      <path d="M216.856 16.597C200.285 8.843 182.566 3.208 164.042 0c-2.275 4.113-4.933 9.645-6.766 14.046-19.692-2.961-39.203-2.961-58.533 0-1.832-4.4-4.55-9.933-6.845-14.046C73.353 3.208 55.613 8.864 39.042 16.638 5.618 67.147-3.443 116.4 1.087 164.956c22.169 16.555 43.653 26.612 64.775 33.193 5.215-7.177 9.866-14.807 13.873-22.848-7.631-2.9-14.94-6.478-21.846-10.632 1.832-1.357 3.624-2.776 5.356-4.236 42.122 19.702 87.89 19.702 129.51 0 1.752 1.46 3.543 2.879 5.356 4.236-6.926 4.175-14.255 7.753-21.886 10.653 4.007 8.02 8.638 15.67 13.873 22.847 21.142-6.581 42.646-16.637 64.815-33.213 5.316-56.288-9.081-105.09-38.056-148.36zM85.474 135.095c-12.645 0-23.015-11.805-23.015-26.18 0-14.376 10.17-26.2 23.015-26.2 12.845 0 23.415 11.819 23.215 26.2.02 14.375-10.37 26.18-23.215 26.18zm85.051 0c-12.645 0-23.014-11.805-23.014-26.18 0-14.376 10.17-26.2 23.014-26.2 12.845 0 23.415 11.819 23.215 26.2 0 14.375-10.37 26.18-23.215 26.18z" />
+    </svg>
+  );
+}
 
 export function CommunitySection() {
   return (
-    <section id="community" className="py-24 px-4">
-      <div className="max-w-3xl mx-auto">
-        <motion.div
-          initial={{ opacity: 0, y: 16 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.3 }}
-          transition={{ duration: 0.6, ease }}
-        >
-          <p className="text-xs font-mono text-muted-foreground/50 mb-4">
-            community
-          </p>
-          <h2 className="text-3xl md:text-4xl font-medium tracking-tight text-foreground leading-tight mb-4">
-            Real people. Real work. No theater.
-          </h2>
-          <p className="text-base text-muted-foreground leading-relaxed max-w-md mb-8">
-            A place for builders who are actually building. Follow along and get involved.
-          </p>
-
-          <div className="flex items-center gap-3">
-            {socials.map(({ label, href, icon }) => (
-              <a
-                key={label}
-                href={href}
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label={label}
-                className="w-10 h-10 flex items-center justify-center rounded-xl border border-foreground/[0.08] text-muted-foreground hover:text-foreground hover:border-foreground/20 transition-colors duration-200 active:scale-[0.97]"
-              >
-                {icon}
-              </a>
-            ))}
+    <section id="community" className="py-16 px-6">
+      <div className="max-w-2xl mx-auto">
+        <Reveal>
+          <div className="flex items-center gap-2">
+            <span className="text-[#5865F2]">
+              <DiscordIcon size={15} />
+            </span>
+            <h2 className="text-sm font-semibold tracking-tight text-foreground">
+              Samuel&apos;s Discord
+            </h2>
           </div>
-        </motion.div>
+        </Reveal>
+
+        <Reveal index={1}>
+          <div className="mt-6 flex flex-wrap items-center gap-3">
+            <MagneticButton>
+              <PulsatingButton
+                onClick={() => window.open(DISCORD_INVITE, "_blank", "noopener,noreferrer")}
+                duration="2.4s"
+                className="inline-flex items-center gap-1.5 rounded-full h-9 px-4 text-[13px] font-medium bg-[#5865F2] text-white hover:opacity-90 active:scale-[0.97] transition-[opacity,transform] duration-150"
+              >
+                <span className="inline-flex items-center gap-1.5">
+                  Join the server
+                  <ArrowUpRight size={12} weight="bold" />
+                </span>
+              </PulsatingButton>
+            </MagneticButton>
+            <a
+              href={`mailto:${SITE_EMAIL}`}
+              className="text-xs text-muted-foreground/60 hover:text-foreground transition-colors duration-150"
+            >
+              {SITE_EMAIL}
+            </a>
+          </div>
+          <p className="mt-3 text-[11px] text-muted-foreground/40">
+            I respond to emails. Or try to. Please don&apos;t spam me.
+          </p>
+        </Reveal>
       </div>
     </section>
   );

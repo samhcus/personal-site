@@ -1,101 +1,129 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { motion } from "motion/react";
-import Image from "next/image";
-import { Drawer } from "vaul";
-import { RetroThemeToggle } from "@/components/ui/retro-theme-toggle";
+import Link from "next/link";
+import { AnimatePresence, motion } from "motion/react";
+import { useTheme } from "next-themes";
+import { AnimatedThemeToggler } from "@/components/ui/animated-theme-toggler";
 import { cn } from "@/lib/utils";
-import { useCommandMenu } from "@/lib/command-menu-context";
-import { List } from "@phosphor-icons/react";
+
+const ease = [0.23, 1, 0.32, 1] as const;
 
 const links = [
-  { label: "Ships",      href: "#work"        },
-  { label: "Newsletter", href: "#newsletter"  },
-  { label: "Studio",     href: "/studio"      },
+  { label: "Projects", href: "/#projects" },
+  { label: "Guide", href: "/guide" },
 ];
-
-const ease = [0.16, 1, 0.3, 1] as const;
 
 export function Nav() {
   const [scrolled, setScrolled] = useState(false);
-  const [sheetOpen, setSheetOpen] = useState(false);
-  const { toggle } = useCommandMenu();
+  const [open, setOpen] = useState(false);
+  const [mounted, setMounted] = useState(false);
+  const { resolvedTheme, setTheme } = useTheme();
 
   useEffect(() => {
-    const sentinel = document.getElementById("nav-sentinel");
-    if (!sentinel) return;
-    const obs = new IntersectionObserver(
-      ([e]) => setScrolled(!e.isIntersecting),
-      { threshold: 0, rootMargin: "-72px 0px 0px 0px" }
-    );
-    obs.observe(sentinel);
-    return () => obs.disconnect();
+    const id = requestAnimationFrame(() => setMounted(true));
+    return () => cancelAnimationFrame(id);
   }, []);
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 24);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
+  useEffect(() => {
+    if (!open) return;
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setOpen(false);
+    };
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, [open]);
 
   return (
     <>
-      <div id="nav-sentinel" className="absolute top-0 h-px w-full pointer-events-none" aria-hidden />
-
-      <header className="fixed top-0 left-0 right-0 z-50 flex justify-center pt-4 px-4">
-        <motion.nav
-          initial={{ opacity: 0, y: -12 }}
+      <header className="fixed top-0 left-0 right-0 z-50 flex items-center justify-center px-6 pt-4 pointer-events-none">
+        <motion.div
+          initial={{ opacity: 0, y: -8 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, ease }}
+          transition={{ duration: 0.4, ease }}
           className={cn(
-            "flex items-center gap-1 rounded-2xl px-2 py-1.5 transition-[background-color,border-color,box-shadow,backdrop-filter] duration-[400ms]",
+            "pointer-events-auto flex items-center gap-1 h-12 px-1.5 rounded-full border transition-[border-color,background-color,box-shadow] duration-300",
             scrolled
-              ? "bg-white/90 dark:bg-zinc-900/90 backdrop-blur-xl border border-black/10 dark:border-white/10 shadow-[0_4px_24px_rgba(0,0,0,0.08)]"
-              : "bg-white/70 dark:bg-zinc-900/60 backdrop-blur-md border border-black/8 dark:border-white/8"
+              ? "border-border bg-background/90 backdrop-blur-md shadow-[0_2px_20px_rgba(0,0,0,0.08)]"
+              : "border-border/60 bg-background/70 backdrop-blur-sm"
           )}
         >
-          <a href="/" className="flex items-center gap-2 pl-1 pr-2">
-            <Image
-              src="/logo.png"
-              alt="Mad House"
-              width={26}
-              height={26}
-              className="rounded-sm drop-shadow-sm"
-              priority
-            />
-            <span className="text-sm font-medium tracking-tight text-foreground">Mad House</span>
-          </a>
-
-          <div className="flex items-center gap-1 pl-1">
-            <RetroThemeToggle />
-            <Drawer.Root open={sheetOpen} onOpenChange={setSheetOpen}>
-              <Drawer.Trigger className="flex items-center justify-center w-8 h-8 rounded-xl hover:bg-foreground/[0.06] transition-colors text-foreground">
-                <List weight="bold" size={16} />
-              </Drawer.Trigger>
-              <Drawer.Portal>
-                <Drawer.Overlay className="fixed inset-0 bg-black/40 z-40" />
-                <Drawer.Content className="fixed bottom-0 left-0 right-0 z-50 flex flex-col rounded-t-2xl bg-white dark:bg-zinc-900 outline-none">
-                  <Drawer.Handle className="mx-auto mt-3 mb-1 h-1.5 w-12 rounded-full bg-black/10 dark:bg-white/10" />
-                  <div className="flex flex-col items-center gap-5 px-6 pt-4 pb-12">
-                    <Image src="/logo.png" alt="Mad House" width={56} height={56} className="mb-1 drop-shadow-md" />
-                    {links.map((link) => (
-                      <a
-                        key={link.label}
-                        href={link.href}
-                        onClick={() => setSheetOpen(false)}
-                        className="text-3xl font-medium tracking-tight text-foreground active:scale-[0.97] transition-[color,transform] duration-150"
-                      >
-                        {link.label}
-                      </a>
-                    ))}
-                    <button
-                      onClick={() => { setSheetOpen(false); toggle(); }}
-                      className="mt-2 text-sm text-muted-foreground active:scale-[0.97] transition-[color,transform] duration-150"
-                    >
-                      Search ⌘K
-                    </button>
-                  </div>
-                </Drawer.Content>
-              </Drawer.Portal>
-            </Drawer.Root>
-          </div>
-        </motion.nav>
+          {/* Menu */}
+          <button
+            onClick={() => setOpen((v) => !v)}
+            className="push-btn outline-none focus-visible:ring-2 focus-visible:ring-foreground/30"
+            aria-label={open ? "Close menu" : "Open menu"}
+            aria-expanded={open}
+          >
+            <span className="push-btn-back" />
+            <span className="push-btn-front" />
+          </button>
+        </motion.div>
       </header>
+
+      <AnimatePresence>
+        {open && (
+          <>
+            <motion.div
+              key="nav-backdrop"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.15 }}
+              className="fixed inset-0 z-40 bg-black/25"
+              onClick={() => setOpen(false)}
+            />
+
+            <motion.div
+              key="nav-panel"
+              initial={{ opacity: 0, y: -6 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -6 }}
+              transition={{ duration: 0.2, ease }}
+              className="fixed top-[72px] left-1/2 -translate-x-1/2 z-50 w-[calc(100%-3rem)] max-w-sm rounded-2xl border border-border bg-background/95 backdrop-blur-md shadow-[0_8px_32px_rgba(0,0,0,0.1)] overflow-hidden"
+            >
+              <div className="p-4">
+                <div className="flex items-center gap-3 pb-4 border-b border-border">
+                  <div>
+                    <p className="text-sm font-semibold text-foreground">Samuel</p>
+                    <p className="text-[11px] text-muted-foreground">@samhcus · samhc.us</p>
+                  </div>
+                  <div className="ml-auto">
+                    {mounted && (
+                      <AnimatedThemeToggler
+                        theme={resolvedTheme === "dark" ? "dark" : "light"}
+                        onThemeChange={setTheme}
+                        aria-label="Toggle light and dark mode"
+                        className="flex items-center justify-center w-9 h-9 rounded-full text-muted-foreground hover:text-foreground hover:bg-foreground/[0.05] active:scale-[0.92] transition-[color,background-color,transform] duration-150 [&_svg]:w-4 [&_svg]:h-4"
+                      />
+                    )}
+                  </div>
+                </div>
+
+                <nav className="mt-3 flex flex-col gap-0.5">
+                  {links.map((link) => (
+                    <Link
+                      key={link.label}
+                      href={link.href}
+                      onClick={() => setOpen(false)}
+                      className="flex items-center h-10 px-3 rounded-xl text-[15px] font-medium text-foreground hover:bg-foreground/[0.04] active:scale-[0.98] transition-[background-color,transform] duration-150"
+                    >
+                      {link.label}
+                    </Link>
+                  ))}
+                </nav>
+              </div>
+            </motion.div>
+          </>
+        )}
+      </AnimatePresence>
     </>
   );
 }
