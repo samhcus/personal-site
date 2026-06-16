@@ -39,3 +39,9 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# subscriber store (runtime data)
+/data/
+
+# agent instructions
+CLAUDE.md
