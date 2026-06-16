@@ -33,7 +33,7 @@ export const projects: Project[] = [
   {
     slug: "mad-house",
     name: "Mad House",
-    oneLiner: "My studio project. The house where the agents live and the mad ideas ship.",
+    oneLiner: "Creative build studio",
     type: "studio",
     status: "live",
     href: "https://github.com/madebymadhouse",
