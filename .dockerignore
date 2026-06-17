@@ -5,3 +5,10 @@ node_modules
 .agents
 data
 *.tsbuildinfo
+.env
+.env.*
+!.env.local.example
+*.pem
+.vercel
+Dockerfile
+.dockerignore
