@@ -20,6 +20,17 @@ export type Project = {
  */
 export const projects: Project[] = [
   {
+    slug: "orinadus",
+    name: "Orinadus",
+    oneLiner: "Research Project",
+    type: "research",
+    status: "live",
+    href: "https://orinauds.com",
+    external: true,
+    accent: "#10B981",
+    soft: "rgba(16, 185, 129, 0.08)",
+  },
+  {
     slug: "chopsticks",
     name: "Chopsticks",
     oneLiner: "Open Source Discord Bot",

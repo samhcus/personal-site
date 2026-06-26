@@ -1,9 +1,7 @@
 "use client";
 
-import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { AnimatePresence, motion } from "motion/react";
 import { ArrowRight, ArrowUpRight, Plus } from "@phosphor-icons/react";
 import { projects, type Project } from "@/lib/projects";
 import { Reveal } from "@/components/reveal";
@@ -22,6 +20,23 @@ import {
 } from "@/components/motion-primitives/morphing-dialog";
 
 /* ─── Face components ──────────────────────────────────────────────── */
+
+function OrinadusFace() {
+  return (
+    <div className="relative h-full overflow-hidden bg-[#0A1628]">
+      <div
+        aria-hidden
+        className="absolute -top-16 left-1/2 -translate-x-1/2 w-[360px] h-[200px]"
+        style={{ background: "radial-gradient(ellipse, rgba(16,185,129,0.15) 0%, transparent 70%)" }}
+      />
+      <div className="relative h-full flex flex-col items-center justify-center gap-2">
+        <span className="text-[14px] font-semibold tracking-tight text-[#E2F8F0]">Orinadus</span>
+        <span className="font-mono text-[10px] text-[#10B981]/50">research</span>
+      </div>
+      <span className="absolute bottom-2.5 right-3.5 font-mono text-[9.5px] text-white/25">orinauds.com</span>
+    </div>
+  );
+}
 
 function MadHouseFace() {
   return (
@@ -181,6 +196,7 @@ function TicketFace() {
 }
 
 const FACES: Record<string, () => React.JSX.Element> = {
+  orinadus: OrinadusFace,
   "mad-house": MadHouseFace,
   chopsticks: ChopsticksFace,
   "wok-specialists": WokFace,
@@ -210,34 +226,7 @@ function StatusDot({ status }: { status: Project["status"] }) {
   );
 }
 
-/* ─── Projects list row ────────────────────────────────────────────── */
-
-function ProjectRow({ project }: { project: Project }) {
-  const content = (
-    <div className="group flex items-center gap-3.5 py-4">
-      <span className="w-[3px] h-8 rounded-full shrink-0" style={{ background: project.accent, opacity: 0.65 }} />
-      <div className="min-w-0 flex-1">
-        <div className="flex items-center gap-2 mb-0.5">
-          <span className="text-[13.5px] font-semibold text-foreground tracking-tight">{project.name}</span>
-        </div>
-        <p className="text-[12.5px] text-muted-foreground/60 leading-snug">{project.oneLiner}</p>
-      </div>
-      {project.href && (
-        project.external
-          ? <ArrowUpRight size={13} weight="bold" className="shrink-0 text-muted-foreground/25 group-hover:text-muted-foreground/55 transition-colors duration-200" />
-          : <ArrowRight size={13} weight="bold" className="shrink-0 text-muted-foreground/25 group-hover:text-muted-foreground/55 transition-colors duration-200" />
-      )}
-    </div>
-  );
-
-  const cls = "block w-full text-left rounded-lg px-1 -mx-1 hover:bg-foreground/[0.025] transition-colors duration-150";
-
-  if (!project.href) return <div className={cls}>{content}</div>;
-  if (project.external) return <a href={project.href} target="_blank" rel="noopener noreferrer" className={cls}>{content}</a>;
-  return <Link href={project.href} className={cls}>{content}</Link>;
-}
-
-/* ─── Misc card (MorphingDialog) ───────────────────────────────────── */
+/* ─── Project card (MorphingDialog) ───────────────────────────────── */
 
 const DESC_VARIANTS = {
   initial: { opacity: 0, y: 10, scale: 0.97 },
@@ -245,9 +234,8 @@ const DESC_VARIANTS = {
   exit:    { opacity: 0, y: 10, scale: 0.97 },
 };
 
-function MiscCard({ project }: { project: Project }) {
-  const TriggerFace = FACES[project.slug];
-  const ContentFace = FACES[project.slug];
+function ProjectCard({ project }: { project: Project }) {
+  const Face = FACES[project.slug];
 
   return (
     <MorphingDialog transition={{ type: "spring", bounce: 0.05, duration: 0.28 }}>
@@ -255,8 +243,8 @@ function MiscCard({ project }: { project: Project }) {
         style={{ borderRadius: "14px" }}
         className="flex w-full flex-col overflow-hidden border border-border/60 bg-card hover:border-foreground/20 transition-colors duration-200 cursor-pointer text-left"
       >
-        <div className="h-28 overflow-hidden">
-          {TriggerFace && <TriggerFace />}
+        <div className="h-40 overflow-hidden">
+          {Face && <Face />}
         </div>
         <div className="flex items-end justify-between px-3 py-2.5">
           <div className="min-w-0 flex-1">
@@ -282,7 +270,7 @@ function MiscCard({ project }: { project: Project }) {
           className="pointer-events-auto relative flex w-full flex-col overflow-hidden border border-border bg-background shadow-[0_32px_80px_rgba(0,0,0,0.22)] sm:w-[440px]"
         >
           <div className="h-44 overflow-hidden">
-            {ContentFace && <ContentFace />}
+            {Face && <Face />}
           </div>
           <div className="p-6">
             <MorphingDialogTitle className="text-xl font-semibold text-foreground tracking-tight">
@@ -291,6 +279,9 @@ function MiscCard({ project }: { project: Project }) {
             <MorphingDialogSubtitle className="mt-0.5 text-[11px] font-mono text-muted-foreground/50">
               {project.type}
             </MorphingDialogSubtitle>
+            <div className="mt-2">
+              <StatusDot status={project.status} />
+            </div>
             <MorphingDialogDescription
               disableLayoutAnimation
               variants={DESC_VARIANTS}
@@ -328,88 +319,36 @@ function MiscCard({ project }: { project: Project }) {
 
 /* ─── Section ──────────────────────────────────────────────────────── */
 
-type SectionView = "projects" | "misc";
-
-const PROJECT_SLUGS = ["chopsticks", "mad-house", "wok-specialists", "liquid-ui", "urchin"];
-const MISC_SLUGS    = ["agent-roster", "lanyard", "ticket"];
-
-const ease = [0.23, 1, 0.32, 1] as const;
+const ALL_SLUGS = [
+  "orinadus",
+  "wok-specialists",
+  "mad-house",
+  "chopsticks",
+  "liquid-ui",
+  "urchin",
+  "agent-roster",
+  "lanyard",
+  "ticket",
+];
 
 export function ProjectsGrid() {
-  const [view, setView] = useState<SectionView>("projects");
-
-  const projectList = PROJECT_SLUGS.map((s) => projects.find((p) => p.slug === s)).filter(Boolean) as Project[];
-  const miscList    = MISC_SLUGS.map((s) => projects.find((p) => p.slug === s)).filter(Boolean) as Project[];
+  const allProjects = ALL_SLUGS.map((s) => projects.find((p) => p.slug === s)).filter(Boolean) as Project[];
 
   return (
     <section id="projects" className="py-16 px-6">
       <div className="max-w-2xl mx-auto">
         <Reveal>
-          <div className="flex items-start justify-between gap-4">
-            <div>
-              <h2 className="text-sm font-semibold tracking-tight text-foreground">My Projects & Prototypes</h2>
-              <p className="mt-1 text-[13px] text-muted-foreground">
-                Everything ships in the open.
-              </p>
-            </div>
-
-            {/* View picker */}
-            <div className="flex shrink-0 items-center gap-0.5 rounded-lg border border-border/50 bg-foreground/[0.02] p-0.5">
-              <button
-                onClick={() => setView("projects")}
-                className={`px-3 py-1 rounded-md text-[11px] font-medium transition-all duration-200 ${
-                  view === "projects"
-                    ? "bg-background shadow-sm text-foreground"
-                    : "text-muted-foreground/55 hover:text-muted-foreground"
-                }`}
-              >
-                Projects
-              </button>
-              <button
-                onClick={() => setView("misc")}
-                className={`px-3 py-1 rounded-md text-[11px] font-medium transition-all duration-200 ${
-                  view === "misc"
-                    ? "bg-background shadow-sm text-foreground"
-                    : "text-muted-foreground/55 hover:text-muted-foreground"
-                }`}
-              >
-                Misc
-              </button>
-            </div>
+          <div>
+            <h2 className="text-sm font-semibold tracking-tight text-foreground">Projects</h2>
+            <p className="mt-1 text-[13px] text-muted-foreground">Everything ships in the open.</p>
           </div>
         </Reveal>
 
-        <AnimatePresence mode="wait" initial={false}>
-          {view === "projects" ? (
-            <motion.div
-              key="projects"
-              initial={{ opacity: 0, y: 6 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -6 }}
-              transition={{ duration: 0.2, ease }}
-              className="mt-4"
-            >
-              {projectList.map((project, i) => (
-                <div key={project.slug} className={i < projectList.length - 1 ? "border-b border-border/40" : ""}>
-                  <ProjectRow project={project} />
-                </div>
-              ))}
-            </motion.div>
-          ) : (
-            <motion.div
-              key="misc"
-              initial={{ opacity: 0, y: 6 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -6 }}
-              transition={{ duration: 0.2, ease }}
-              className="mt-6 grid grid-cols-1 sm:grid-cols-3 gap-3"
-            >
-              {miscList.map((project) => (
-                <MiscCard key={project.slug} project={project} />
-              ))}
-            </motion.div>
-          )}
-        </AnimatePresence>
+        <div className="mt-6 grid grid-cols-1 sm:grid-cols-3 gap-3">
+          {allProjects.map((project) => (
+            <ProjectCard key={project.slug} project={project} />
+          ))}
+        </div>
       </div>
     </section>
   );
